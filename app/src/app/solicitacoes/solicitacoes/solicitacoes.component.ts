@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Solicitacao } from '../model/solicitacao';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';
+import { SolicitacoesService } from '../services/solicitacoes.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-solicitacoes',
@@ -10,17 +12,17 @@ import { AppMaterialModule } from '../../shared/app-material/app-material.module
   templateUrl: './solicitacoes.component.html',
   styleUrl: './solicitacoes.component.css'
 })
-export class SolicitacoesComponent {
+export class SolicitacoesComponent implements OnInit{
 
-  solicitacoes: Solicitacao[] = [
-    {
-      solicitante: 'Igor Vinicius',
-      setor: 'Tecnologia',
-      quantidade: 1,
-      centroCusto: 10402,
-      dataSolicitacao: '26/11/2023',
-      codigoItem: [100230],
-    }
-  ]
-  displayedColumns = ['solicitante', 'setor', 'dataSolicitacao'];
+  solicitacoes: Observable<Solicitacao[]>;
+
+
+  displayedColumns = ['solicitante', 'setor', 'dataSolicitacao', 'status'];
+
+  constructor(private solicitacoesService: SolicitacoesService) {
+    this.solicitacoes = this.solicitacoesService.list();
+  }
+
+  ngOnInit(): void {
+  }
 }

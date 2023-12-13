@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-
-import { Item } from '../model/item';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';
+import { Item } from '../model/item';
+import { ItensService } from '../services/itens.service';
+import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -13,18 +15,22 @@ import { AppMaterialModule } from '../../shared/app-material/app-material.module
   templateUrl: './itens.component.html',
   styleUrl: './itens.component.css'
 })
-export class ItensComponent {
+export class ItensComponent implements OnInit{
 
-  itens: Item[] = [
-    {
-      _id:"1",
-      codigo: 100230,
-      nome: 'Fita',
-      preco: 10.50,
-      quantidade: 10,
-      solicitacoes: []
-    }
-  ];
+  itens: Observable<Item[]>;
+
+  ;
+
+  //itensServise: ItensService;
+
+  constructor(private itensServise: ItensService) {
+    //this.itensServise = new ItensService(httpClient);
+    this.itens = this.itensServise.list();
+  }
+
+  ngOnInit(): void {
+
+  }
 
   displayedColumns = ['codigo', 'nome', 'quantidade'];
 }
