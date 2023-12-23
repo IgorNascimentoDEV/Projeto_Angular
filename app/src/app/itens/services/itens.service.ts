@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Item } from '../model/item';
 import { delay, first, tap } from 'rxjs';
+import { ItensModule } from '../itens.module';
 
 
 
@@ -20,5 +21,10 @@ export class ItensService {
       first(),
       tap(itens => console.log(itens))
     );
+  }
+
+
+  save(record: Item) {
+    return this.httpClient.post<Item>(this.API, record).pipe(first());
   }
 }
