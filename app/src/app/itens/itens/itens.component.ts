@@ -41,9 +41,10 @@ export class ItensComponent implements OnInit{
   }
 
   OnError(errorMsg: string) {
-    this.dialog.open(ErrorDialogComponent, {
-      data: errorMsg
-    });
+    //this.dialog.open(ErrorDialogComponent, {
+     // data: errorMsg
+   // });
+   console.log(errorMsg);
   }
 
   displayedColumns = ['codigo', 'nome', 'quantidade'];

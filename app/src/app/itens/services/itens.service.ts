@@ -10,7 +10,7 @@ import { delay, first, tap } from 'rxjs';
 })
 export class ItensService {
 
-  private readonly API = '/assets/itens.json';
+  private readonly API = 'https://localhost:7269/api/itens';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class ItensService {
     return this.httpClient.get<Item[]>(this.API)
     .pipe(
       first(),
-      //tap(itens => console.log(itens))
+      tap(itens => console.log(itens))
     );
   }
 }
