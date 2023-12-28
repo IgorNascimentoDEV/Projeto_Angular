@@ -1,0 +1,15 @@
+table{
+  overflow: auto;
+  max-width: 600px;
+  align-items: center;
+}
+.flex{
+  display: flex;
+}
+.coluna-acao{
+  flex: 0 0 0 85px;
+}
+
+th{
+  align-items: center;
+}
