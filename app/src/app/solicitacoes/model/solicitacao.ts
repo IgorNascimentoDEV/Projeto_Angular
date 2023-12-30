@@ -1,5 +1,5 @@
 export interface Solicitacao {
-  _id: string;
+  id: string;
   solicitante: string;
   setor: string;
   quantidade: number;

@@ -21,3 +21,12 @@
 .button{
   margin: 0.5rem;
 }
+
+.input-form{
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-80{
+  width: 49%;
+}
