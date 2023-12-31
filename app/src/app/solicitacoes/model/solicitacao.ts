@@ -3,7 +3,7 @@ export interface Solicitacao {
   solicitante: string;
   setor: string;
   quantidade: number;
-  centroCusto: number;
+  centroDeCusto: number;
   dataSolicitacao: string;
   status: string;
   codigoItem: number[];

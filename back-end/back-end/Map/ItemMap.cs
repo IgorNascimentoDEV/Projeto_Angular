@@ -19,6 +19,8 @@ namespace back.Map
             builder.Property(x => x.Nome).HasColumnType("varchar(50)").HasColumnName("nome").IsRequired();
             builder.Property(x => x.Preco).HasColumnType("float").HasColumnName("preco").IsRequired();
             builder.Property(x => x.Quantidade).HasColumnType("int").HasColumnName("quantidade").IsRequired();
+
+
         }
     }
 }

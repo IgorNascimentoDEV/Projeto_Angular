@@ -8,7 +8,6 @@
         public int CentroDeCusto { get; set; }
         public string DataSolicitacao { get; set; }
         public string Status { get; set; }
-
-        public List<ItensModel> Itens { get; set; }
+        public ItensModel Item { get; set; }
     }
 }

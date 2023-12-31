@@ -2,6 +2,7 @@
 using back.Domain.Dtos;
 using back.Domain.Interfaces;
 using back.Domain.Models;
+using back.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back.Controllers

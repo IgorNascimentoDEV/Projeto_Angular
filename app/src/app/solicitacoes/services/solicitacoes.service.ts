@@ -8,7 +8,7 @@ import { Observable, first, tap } from 'rxjs';
 })
 export class SolicitacoesService {
 
-  private readonly API = '/assets/solicitacoes.json'
+  private readonly API = 'https://localhost:7269/api/solicitacao'
 
   constructor(private httpclient: HttpClient) { }
 

@@ -15,12 +15,12 @@ namespace back.Infrastructure.Repositories
 
         public async Task<IEnumerable<SolicitacoesModel>> GetSolicitacoesAsync()
         {
-            return await _context.Solicitacoes.Include(x => x.Itens).ToListAsync();
+            return await _context.Solicitacoes.Include(x => x.Item).ToListAsync();
         }
 
         public async Task<SolicitacoesModel> GetSolicitacoesByIdaAsync(long id)
         {
-            return await _context.Solicitacoes.Include(x => x.Itens).Where(s => s.Id == id).FirstOrDefaultAsync();
+            return await _context.Solicitacoes.Include(x => x.Item).Where(s => s.Id == id).FirstOrDefaultAsync();
         }
     }
 }

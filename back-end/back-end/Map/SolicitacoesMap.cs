@@ -22,14 +22,8 @@ namespace back.Map
             builder.Property(x => x.DataSolicitacao).HasColumnType("varchar(50)").HasColumnName("data_solicitacao").IsRequired();
             builder.Property(x => x.Status).HasColumnType("varchar(50)").HasColumnName("status").IsRequired();
 
-            // Criação da tabela de junção
-            builder
-                .HasMany(x => x.Itens)
-                .WithMany(x => x.Solicitacoes)
-                .UsingEntity(j =>
-                {
-                    j.ToTable("tb_solicitacoes_itens"); 
-                });
+            // Correção do relacionamento para indicar que cada Solicitacao está associada a um único Item
+            builder.HasOne(x => x.Item).WithMany(x => x.Solicitacoes).IsRequired();
         }
     }
 }

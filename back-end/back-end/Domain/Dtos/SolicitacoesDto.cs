@@ -8,6 +8,6 @@
         public int CentroDeCusto { get; set; }
         public string DataSolicitacao { get; set; }
         public string Status { get; set; }
-        public List<int> CodigoItens { get; set; }
+        public long CodigoItem { get; set; }
     }
 }
