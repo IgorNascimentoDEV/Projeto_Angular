@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item } from '../../model/item';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
 
 @Component({

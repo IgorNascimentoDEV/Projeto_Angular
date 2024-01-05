@@ -52,7 +52,7 @@ export class SolicitacaoFormComponent implements OnInit {
     );
   }
 
-  updateForm(solicitacao: Solicitacao) {
+  updateForm(solicitacao: any) {
     this.form.patchValue({
       id: solicitacao.id,
       solicitante: solicitacao.solicitante,
@@ -61,7 +61,7 @@ export class SolicitacaoFormComponent implements OnInit {
       centroDeCusto: solicitacao.centroDeCusto,
       dataSolicitacao: solicitacao.dataSolicitacao,
       status: solicitacao.status,
-      codigoItem: solicitacao.codigoItem,
+      codigoItem: solicitacao.item.codigo,
     });
   }
 

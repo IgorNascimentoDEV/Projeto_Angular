@@ -49,6 +49,42 @@ namespace back_end.Controllers
             var solicitacoes = _solicitacoesRepository.GetSolicitacoesAsync();
 
             return solicitacoes == null ? NotFound() : Ok(solicitacoes.Result);
-    }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSolicitacoesById(long id)
+        {
+            var solicitacao = _solicitacoesRepository.GetSolicitacoesByIdaAsync(id);
+
+            return solicitacao == null ? NotFound() : Ok(solicitacao.Result);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutItem(long id, SolicitacoesDto solicitacao)
+        {
+            var solicitacaoBuscada = await _solicitacoesRepository.GetSolicitacoesByIdaAsync(id);
+
+            if (solicitacaoBuscada == null) return BadRequest("Solicitacao não encontrado");
+
+            _mapper.Map(solicitacao, solicitacaoBuscada);
+
+            _solicitacoesRepository.Update(solicitacaoBuscada);
+
+            var saveResult = await _solicitacoesRepository.SaveChangesAsync();
+
+            return saveResult ? Ok(solicitacaoBuscada) : BadRequest("Não foi possível atualizar a solicitação");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSolicitaco(long id)
+        {
+            var solicitacaoBuscada = await _solicitacoesRepository.GetSolicitacoesByIdaAsync(id);
+
+            if (solicitacaoBuscada == null) return BadRequest("Solicitação não encontrada");
+
+            _solicitacoesRepository.Delete(solicitacaoBuscada);
+
+            return await _solicitacoesRepository.SaveChangesAsync() ? Ok(solicitacaoBuscada) : BadRequest("Error ao salvar");
+        }
     }
 }

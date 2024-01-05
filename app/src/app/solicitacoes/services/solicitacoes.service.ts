@@ -36,4 +36,14 @@ export class SolicitacoesService {
   save(solicitacao: Solicitacao) {
     return this.httpclient.post<Solicitacao>(this.API, solicitacao).pipe(first());
   }
+
+  public delete(id: string){
+    return this.httpclient.delete(`${this.API}/${id}`)
+    .pipe(
+      tap(
+        () => console.log('Exclusão realizada'),
+        (error) => console.error('Error ao excluir a solicitação', error)
+      )
+    );
+  }
 }
